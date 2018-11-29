@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="注：本文会涉及到kindle的jailbreak，如果对此有concern（鄙人表示非常理解）抑或有某种不可告人的洁癖抑或根本不需要在kindle上阅读中文的话，请勇敢的忽略此文。 首先列出本文的参考文献，因为本文都是建立在参考它们的基础之上：  MobileRead: Fonts &amp;amp; ScreenSavers Hacks for Kindles hi-pda: Kindle 3 的中文阅">
+<meta name="keywords" content="jailbreak,Kindle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kindle 3.1 中文阅读">
+<meta property="og:url" content="http://yoursite.com/2011/04/15/kindle-3-1-e4-b8-ad-e6-96-87-e9-98-85-e8-af-bb/index.html">
+<meta property="og:site_name" content="Samson&#39;s Blog">
+<meta property="og:description" content="注：本文会涉及到kindle的jailbreak，如果对此有concern（鄙人表示非常理解）抑或有某种不可告人的洁癖抑或根本不需要在kindle上阅读中文的话，请勇敢的忽略此文。 首先列出本文的参考文献，因为本文都是建立在参考它们的基础之上：  MobileRead: Fonts &amp;amp; ScreenSavers Hacks for Kindles hi-pda: Kindle 3 的中文阅">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-29T07:56:20.411Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kindle 3.1 中文阅读">
+<meta name="twitter:description" content="注：本文会涉及到kindle的jailbreak，如果对此有concern（鄙人表示非常理解）抑或有某种不可告人的洁癖抑或根本不需要在kindle上阅读中文的话，请勇敢的忽略此文。 首先列出本文的参考文献，因为本文都是建立在参考它们的基础之上：  MobileRead: Fonts &amp;amp; ScreenSavers Hacks for Kindles hi-pda: Kindle 3 的中文阅">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2011/04/15/kindle-3-1-e4-b8-ad-e6-96-87-e9-98-85-e8-af-bb/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Kindle 3.1 中文阅读 | Samson's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Samson's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2011/04/15/kindle-3-1-e4-b8-ad-e6-96-87-e9-98-85-e8-af-bb/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samson Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Samson's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Kindle 3.1 中文阅读
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2011-04-15 14:26:22" itemprop="dateCreated datePublished" datetime="2011-04-15T14:26:22+08:00">2011-04-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-29 15:56:20" itemprop="dateModified" datetime="2018-11-29T15:56:20+08:00">2018-11-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Share/" itemprop="url" rel="index"><span itemprop="name">Share</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><em>注：本文会涉及到kindle的jailbreak，如果对此有concern（鄙人表示非常理解）抑或有某种不可告人的洁癖抑或根本不需要在kindle上阅读中文的话，请勇敢的忽略此文。</em> 首先列出本文的参考文献，因为本文都是建立在参考它们的基础之上：</p>
+<ul>
+<li><a href="http://www.mobileread.com/forums/showthread.php?t=88004" target="_blank" rel="noopener">MobileRead: Fonts &amp; ScreenSavers Hacks for Kindles</a></li>
+<li><a href="http://www.hi-pda.com/forum/viewthread.php?tid=753311&amp;extra=page%3D1" target="_blank" rel="noopener">hi-pda: Kindle 3 的中文阅读之路</a></li>
+</ul>
+<p>[引子] 我之前经常用 chrome 的 <a href="https://chrome.google.com/webstore/detail/ipkfnchcgalnafehpglfbommidgmalan" target="_blank" rel="noopener">send to kindle</a> 插件往kindle上发想看但又不想在浏览器上看的文章，之前鬼差神使般的竟然没有遇到过任何中文issue，但是一个月黑风高的夜晚kindle 3.1 release了，然后所有的平静就这样被打破了，突然间所有 send to kindle 过来的文章无一例外都render出一个个小方块，虽然我之前一直有预感，但这一刻最终终于还是来了… 为了排除是插件升级所带来的问题，另外一个月黑风高的夜晚我给插件的作者发了comment，告之其中文有issue，第二天的reply果然验证了我的哥德巴赫猜想，插件没问题，是kindle有问题，anyway，虽然一直还没理解之前kindle 3.03奇迹般的没问题的原因，但既然3.1还是有问题，我们就需要fix它；既然amazon不是这么proactively的fix它，那我们就只能小小的customize一下下了。 [changeLocale] 这个方法从3.0*开始便一直work，但是它会使中文显得比较黯淡，阅读起来有点费力，可能还有一些别的副作用，但是无论如何，至少是一种solution：</p>
+<blockquote>
+<p>;debugOn ~changeLocale zh-CN ;debugOff</p>
+</blockquote>
+<p>[Jail Break] 为了使用 <a href="http://www.mobileread.com/forums/showthread.php?t=88004" target="_blank" rel="noopener">MobileRead</a> 论坛的 fonts hack，我们需要先越狱，下载那里的jailbreak包 ((目前最新版是kindle-jailbreak-0.6.N.zip))，解压后从中找出符合你kindle版本的update_jailbreak_<strong><em>_install.bin文件（比如我的kindle wifi是update_jailbreak_0.6.N_k3w_install.bin），将其通过usb连上kindle后copy到kindle的根目录，然后eject kindle并Update Your Kindle ( [HOME] -&gt; [MENU] &gt; Settings -&gt; [MENU] &gt; Update Your Kindle ) 后，你的kindle便已经成功越狱了。 [Fonts Hack] Jailbreak后，我们便可以安装fonts hack了，同理，到#1参考文献下载 fonts hack ((kindle 3目前的最新版是kindle-fonts-4.4.N-k3.zip))，文件有点稍大，下载可能有点慢，耐心耐心… 下载完后解压后从中找出符合你kindle版本的update_fonts_</em></strong>_install.bin文件（我的是update_fonts_4.4.N_k3w_install.bin），然后同jailbreak一样，将其通过usb连上kindle后拷到kindle根目录，然后再eject，Update Your Kindle，这样默认的字体hack就装好了。kindle restart后你应该已经可以看到中文字体已经没有问题了，并且英文字体也被customize成fonts hack自带的Droid Sans了，如果你更喜欢系统默认的英文字体，没有关系，下面我们自己来customize字体。 [Customize Fonts] 我的preferences很简单，英文仍旧沿用系统自带，中文使用尽量符合纸质书阅读习惯的字体（不要太黑，也不要太粗，当然更不能有乱码）。 首先，我们用系统自带的英文字体来覆盖fonts hack的英文字体，系统默认的字体根据#2参考文献可以在<a href="http://dl.dbank.com/c0mu0y3qt8" target="_blank" rel="noopener">这里</a>下载到，装完fonts hack再用usb连上kindle后，我们可以发现kindle根目录多了一个叫做linkfonts的目录，其子目录fonts目录包括了所有我们customized的font，将系统默认字体包解压后覆盖到linkfonts/fonts目录后即可。 接下来我们把中文字体改成方正兰亭（我个人的preferences而已，当然是在蛋疼试过一圈之后所得出来的血的经验，更多的中文字体亦可在#2参考文献中找到），同理，根据#2参考文献，方正兰亭GBK字体可以在<a href="http://dl.dbank.com/c0cd6tbkfc" target="_blank" rel="noopener">这里</a>下载到。解压后不用全部拷贝，只用将其fonts目录下的CJK.tff和CJK_Bold.ttf文件copy到kindle的linkfonts/fonts目录即可。 ok，除了重启we’re almost done，fonts hack默认enable了一个叫autoreboot的feature，只要我们在linkfonts目录下（不是fonts目录）创建一个叫reboot的空文件然后eject kindle并拔掉usb后10s便会自动重启，当然我们亦可以手动重启。 [尾声] fonts hack之后的系统已经没有任何中文render的issue了，chrome的send to kindle插件也重新开始没有乱码，再次证明了不是插件本身的issue。#2参考文献后面还推荐了不少kindle的订阅和推送服务，有兴趣的同学都可以去尝试尝试。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jailbreak/" rel="tag"># jailbreak</a>
+          
+            <a href="/tags/Kindle/" rel="tag"># Kindle</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2011/04/13/update-55-e6-a0-b8-e5-8e-bb-e6-a0-b8-e4-bb-8e/" rel="next" title="Update 55: 核去核从">
+                <i class="fa fa-chevron-left"></i> Update 55: 核去核从
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2011/04/30/update-56-silence-is-golden/" rel="prev" title="Update 56: Silence is golden">
+                Update 56: Silence is golden <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Samson Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">347</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">148</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">140</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Samson Wu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

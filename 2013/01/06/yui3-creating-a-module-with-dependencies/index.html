@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="与前文类似，本文为译文，相关事宜同前文。 [问题] 你想要创建一个自定义的YUI模块并确保它会把另外一个YUI模块作为依赖加载。 [解决办法] 使用YUI.add()方法注册你的code作为一个YUI全局对象（YUI global object）的一个模块，注册的过程中把模块的依赖作为配置对象传给它。在模块名字和定义之后，YUI.add()还接收两个可选的参数：  一个模块的字符串形式的版本数字。">
+<meta name="keywords" content="JavaScript,YUI,YUI3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YUI3: Creating a Module with Dependencies">
+<meta property="og:url" content="http://yoursite.com/2013/01/06/yui3-creating-a-module-with-dependencies/index.html">
+<meta property="og:site_name" content="Samson&#39;s Blog">
+<meta property="og:description" content="与前文类似，本文为译文，相关事宜同前文。 [问题] 你想要创建一个自定义的YUI模块并确保它会把另外一个YUI模块作为依赖加载。 [解决办法] 使用YUI.add()方法注册你的code作为一个YUI全局对象（YUI global object）的一个模块，注册的过程中把模块的依赖作为配置对象传给它。在模块名字和定义之后，YUI.add()还接收两个可选的参数：  一个模块的字符串形式的版本数字。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-29T07:56:20.416Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="YUI3: Creating a Module with Dependencies">
+<meta name="twitter:description" content="与前文类似，本文为译文，相关事宜同前文。 [问题] 你想要创建一个自定义的YUI模块并确保它会把另外一个YUI模块作为依赖加载。 [解决办法] 使用YUI.add()方法注册你的code作为一个YUI全局对象（YUI global object）的一个模块，注册的过程中把模块的依赖作为配置对象传给它。在模块名字和定义之后，YUI.add()还接收两个可选的参数：  一个模块的字符串形式的版本数字。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2013/01/06/yui3-creating-a-module-with-dependencies/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>YUI3: Creating a Module with Dependencies | Samson's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Samson's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2013/01/06/yui3-creating-a-module-with-dependencies/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samson Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Samson's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">YUI3: Creating a Module with Dependencies
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2013-01-06 17:33:22" itemprop="dateCreated datePublished" datetime="2013-01-06T17:33:22+08:00">2013-01-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-29 15:56:20" itemprop="dateModified" datetime="2018-11-29T15:56:20+08:00">2018-11-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Front-end/" itemprop="url" rel="index"><span itemprop="name">Front-end</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Front-end/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Front-end/JavaScript/Share/" itemprop="url" rel="index"><span itemprop="name">Share</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Front-end/JavaScript/Share/Technique/" itemprop="url" rel="index"><span itemprop="name">Technique</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Front-end/JavaScript/Share/Technique/YUI3/" itemprop="url" rel="index"><span itemprop="name">YUI3</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>与<a href="http://blog.samsonis.me/2013/01/yui3-creating-your-own-modules/" target="_blank" rel="noopener">前文</a>类似，本文为译文，相关事宜同前文。 <strong>[问题]</strong> 你想要创建一个自定义的YUI模块并确保它会把另外一个YUI模块作为依赖加载。 <strong>[解决办法]</strong> 使用YUI.add()方法注册你的code作为一个YUI全局对象（YUI global object）的一个模块，注册的过程中把模块的依赖作为配置对象传给它。在模块名字和定义之后，YUI.add()还接收两个可选的参数：</p>
+<ul>
+<li>一个模块的字符串形式的版本数字。这是你的模块的版本号，并不是你的模块所兼容的YUI版本。</li>
+<li>一个包含模块metadata的配置对象。目前这个配置对象（configuration object）里面最常见的field是一个叫requires的array，它列出了该模块的所有依赖。对里面所列出的每个模块，YUI会自动在需要的时候加载它们，必要的时候会远程的加载。</li>
+</ul>
+<p>下面的例子对<a href="http://blog.samsonis.me/2013/01/yui3-creating-your-own-modules/" target="_blank" rel="noopener">前文例子</a>做了修改。Y.Hello.sayHello()不在返回一个字符串值，而是改变一个单个Y.Node的内容。这个hello模块定义了一个node-base的依赖，来确保调用hello模块的时候node.setHTML()是存在并可用的。 为了让事情变得更有趣一些，sayHello()使用了一个叫setNodeMessage()的私有helper函数。因为setNodeMessage()并没有被attach到Y实例上，所以我们并不能直接调用setNodeMessage()。setNodeMessage()使用了Y.one()方法确保input参数是一个YUI的node，然后给该node设置相应的message文本。 [cc lang=”html” nowrap=”false”] Creating a module that depends on a YUI node</p>
+<p>YUI.add(‘hello’, function (Y) { function setNodeMessage(node, html) { node = Y.one(node); if (node) { node.setHTML(html); } } Y.namespace(‘Hello’).sayHello = function (node) { setNodeMessage(node, ‘GREETINGS PROGRAMS’); }; }, ‘0.0.1’, {requires: [‘node-base’]}); YUI().use(‘hello’, function (Y) { Y.Hello.sayHello(Y.one(‘#demo’)); }); [/cc] 不同于<a href="http://blog.samsonis.me/2013/01/yui3-creating-your-own-modules/" target="_blank" rel="noopener">前文例子</a>，上面例子的use()并不需要显式的引用node-base。这个新的改进过的hello模块会自动的加载这个依赖。 <strong>[讨论]</strong> 上面例子中hello模块在requires数组里面列出了依赖的node-base模块。这样就能保证YUI().use()在加载完node-base模块（或者其它任何在requires数组里面列出的依赖模块）之后再加载并attach hello模块到Y上。 在提供依赖的时候，要小心的避免循环依赖。比方说，如果hello模块定义了goodbye模块必须在hello模块之前load，但是goodbye模块却定义hello模块需在goodbye模块之前load，这就有了问题。加载器（The Loader）确实有相关代码来处理metadata里面循环依赖，即便如此，你也不能指望你的code会执行的如你所愿。 如Recipe 1.10里面所描述的（稍后奉上），为了效率考虑，你应该同时在Loader的metadata里面提供你模块的依赖信息。 正如之前所提到的，requires是最重要的field。YUI.add()的其它一些field还包括： <strong><em>optional</em></strong> 一个在YUI config选项loadOptional被设置成true的时候，引用你的模块时需要自动被加载的模块的名字的数组。比如，autocomplete-base模块定义了一个非必须的对于autocomplete-sources的依赖，该模块里面包括了额外的从YQL和其它remote sources给AutoComplete控件填值的功能。loadOptional默认是false。即使loadOptional被设置成false，如果该非必须的模块代码恰巧已经在页面上被加载过了，该模块依然可以被激活（activate）。当前页面已经存在该模块代码可能是一个较早的YUI().use()调用引用了该模块，也可能是该模块代码被静态的加载了，我们会在Recipe 1.20里面讨论它。 <strong><em>skinnable</em></strong> 这是一个指定你定义的模块是否支持CSS皮肤的Boolean值。如果该值是true，YUI会在document里面自动的创建了一个link element并以如下的URL加载CSS文件： [cc lang=”bash”] base/module-name/assets/skins/skin-name/module-name.css [/cc] 这里面base是config对象的base field的值（在Recipe 1.11里面讨论，稍后奉上），skin-name是皮肤的名字，默认是sam。 <strong><em>use</em></strong> Deprecated. 一个用来定义“physical rollups”（老的已经deprecated的rollup）的模块名字的数组。 除了模块依赖，后面相关例子（见后文，稍后）里面展示了一个模块里面的私有函数。因为Javascript缺失一个显式声明private的关键字，很多Javascript开发者用一个下划线前缀来象征性的描述私有数据，这会警告其他开发人员这个函数或者变量“应该”是私有的。很多情况下，这种形式已经足够了。 不过，上面例子的setNodeMessage()函数是真正的私有的。一旦YUI执行add()的回调函数，模块用户可以调用sayHello()方法，但是他们却不能直接调用setNodeMessage()，虽然sayHello()内部维护着其对于setNodeMessage()的引用。JavaScript里面一个inner函数可以访问其outer函数的所有member，即使outer函数已经执行完毕。这个重要的语言特性叫做闭包（closure）。 <strong>[相关]</strong> Recipe 7.10; Douglas Crockford的“<a href="http://www.crockford.com/javascript/private.html" target="_blank" rel="noopener">Private Members in JavaScript</a>”.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/YUI/" rel="tag"># YUI</a>
+          
+            <a href="/tags/YUI3/" rel="tag"># YUI3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/01/06/yui3-creating-your-own-modules/" rel="next" title="YUI3: Creating Your Own Modules">
+                <i class="fa fa-chevron-left"></i> YUI3: Creating Your Own Modules
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/01/23/so-long/" rel="prev" title="" so="" long""="">
+                "So long" <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Samson Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">347</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">148</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">140</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Samson Wu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

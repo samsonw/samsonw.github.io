@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="每当我要逼自己去学习点新东西的时候，我总是强迫自己去认真读完一系列关于此类知识或是技术的一看上去就不错的文章，所谓开卷有益；但鄙人有个坏习惯就是喜欢一目十行断章取义，可能互联网的快餐式节奏让我和我的小伙伴们都渐渐趋于浮躁了，当然也许趋于浮躁的只有鄙人也说不定，小伙伴们可能都很淡定，无故拉上不明真相的群众垫背纯属鄙人以小人之心度君子之腹； 于是，本文就在这样的大背景下诞生了； 本文为译文，翻译自原文">
+<meta name="keywords" content="angular,front-end,angularjs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 1)">
+<meta property="og:url" content="http://yoursite.com/2015/04/09/angularjs-tutorial-learn-angularjs-in-30-minutes-part-1/index.html">
+<meta property="og:site_name" content="Samson&#39;s Blog">
+<meta property="og:description" content="每当我要逼自己去学习点新东西的时候，我总是强迫自己去认真读完一系列关于此类知识或是技术的一看上去就不错的文章，所谓开卷有益；但鄙人有个坏习惯就是喜欢一目十行断章取义，可能互联网的快餐式节奏让我和我的小伙伴们都渐渐趋于浮躁了，当然也许趋于浮躁的只有鄙人也说不定，小伙伴们可能都很淡定，无故拉上不明真相的群众垫背纯属鄙人以小人之心度君子之腹； 于是，本文就在这样的大背景下诞生了； 本文为译文，翻译自原文">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-29T07:56:20.419Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 1)">
+<meta name="twitter:description" content="每当我要逼自己去学习点新东西的时候，我总是强迫自己去认真读完一系列关于此类知识或是技术的一看上去就不错的文章，所谓开卷有益；但鄙人有个坏习惯就是喜欢一目十行断章取义，可能互联网的快餐式节奏让我和我的小伙伴们都渐渐趋于浮躁了，当然也许趋于浮躁的只有鄙人也说不定，小伙伴们可能都很淡定，无故拉上不明真相的群众垫背纯属鄙人以小人之心度君子之腹； 于是，本文就在这样的大背景下诞生了； 本文为译文，翻译自原文">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/04/09/angularjs-tutorial-learn-angularjs-in-30-minutes-part-1/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 1) | Samson's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Samson's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/04/09/angularjs-tutorial-learn-angularjs-in-30-minutes-part-1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samson Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Samson's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 1)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2015-04-09 14:45:11" itemprop="dateCreated datePublished" datetime="2015-04-09T14:45:11+08:00">2015-04-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-29 15:56:20" itemprop="dateModified" datetime="2018-11-29T15:56:20+08:00">2018-11-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/AngularJS/" itemprop="url" rel="index"><span itemprop="name">AngularJS</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/AngularJS/Front-end/" itemprop="url" rel="index"><span itemprop="name">Front-end</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/AngularJS/Front-end/Technique/" itemprop="url" rel="index"><span itemprop="name">Technique</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>每当我要逼自己去学习点新东西的时候，我总是强迫自己去认真读完一系列关于此类知识或是技术的一看上去就不错的文章，所谓开卷有益；但鄙人有个坏习惯就是喜欢一目十行断章取义，可能互联网的快餐式节奏让我和我的小伙伴们都渐渐趋于浮躁了，当然也许趋于浮躁的只有鄙人也说不定，小伙伴们可能都很淡定，无故拉上不明真相的群众垫背纯属鄙人以小人之心度君子之腹； 于是，本文就在这样的大背景下诞生了； 本文为译文，翻译自原文：<a href="http://www.revillweb.com/tutorials/angularjs-in-30-minutes-angularjs-tutorial/" target="_blank" rel="noopener">http://www.revillweb.com/tutorials/angularjs-in-30-minutes-angularjs-tutorial/</a> 同理按我以前翻(xue)译(xi) <a href="http://blog.samsonis.me/2011/10/felixs-node-js-style-guide-part-1/" target="_blank" rel="noopener">)其他文章</a>的尿性，标题通常保留原文标题，属于不被待见的范畴，标题君默默哭晕在厕所； ============================== 我是分割线 ==============================</p>
+<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>本AngularJS教程将会在30分钟里以一套合理优化过的知识介绍带你浏览整个AngularJS的世界，带你装逼带你飞（译者注）。当看完本篇篇幅不长但内容细致的教程后，您将能快速的创建强大且直观的web应用程序。 <a href="http://codepen.io/RevillWeb/full/KwVoMv/" target="_blank" rel="noopener">观看演示</a> <a href="https://github.com/RevillWeb/angularjs-tutorial" target="_blank" rel="noopener">查看源代码</a></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>我从三年前开始使用AngularJS，那时Angular属于新兴技术且相对不为世人所知。从那时起，AngularJS便慢慢变成最流行的JavaScript开发框架。AngularJS的开发小组为了让Angular处于它所能够处于的最好的状态付出了极大地努力和专注。 本AngularJS教程将会使用Angular版本1.3.4（截止本文发布，Angular最新的稳定版本是1.3.15，译者注），将会覆盖Angular相关基础知识，且实现方式会符合google推荐的最佳实践和本人自己的相关经验。</p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>首先创建一个文件夹angularjs-tutorial，并且按照下面的目录结构创建文件： [cc lang=”javascript”] - angularjs-tutorial | - main.ctrl.js | - app.js | - index.html [/cc] 打开index.html，用下面简单的HTML代码创建一个包含AngularJS和Twitter Bootstrap的简单web页面，其中AngularJS和BootStrap都是从CDN上拿到的。我们将使用Twitter Bootstrap作为本教程的CSS框架，这样我们能够快速的创建layout并且集中注意力到AngularJS本身上。如果你想学习更多关于Twitter Bootstrap的知识可以参考我另外一篇<a href="http://www.revillweb.com/tutorials/twitter-bootstrap-tutorial" target="_blank" rel="noopener">关于Twitter Bootstrap的教程</a>。 [cc lang=”html” nowrap=”false”]  AngularJS Tutorial     [/cc] 这份HTML文档也加入了对app.js和main.ctrl.js的引用，这两个文件就是我们上面刚刚创建的。</p>
+<h3 id="Angular化你的网页"><a href="#Angular化你的网页" class="headerlink" title="Angular化你的网页"></a>Angular化你的网页</h3><p>在app.js文件里面我们需要实例化一个AngularJS模块以便在应用程序里面使用。拷贝下面的代码进入app.js [cc lang=”javascript”] angular.module(‘app’, []); [/cc] angular.module()方法会充当angular模块的getter和setter角色。其中第一个参数是这个模块的名字，第二个参数我们传递了一个array数组。如果第二个参数传递了数组，那么angular会创建一个app模块而不是去取回这个模块，您将会在下面我们创建controller的时候看到。 [cc nowrap=”false”] [信息] 在更复杂的应用程序里面，您可能需要提供一份包含这个模块所有依赖的模块的列表数组，而不是像这里的空数组。 [/cc] 现在我们需要告诉angular哪里将会使用到这个模块，打开index.html，在<em><strong><body></body></strong></em>标签加入<em><strong>ng-app=’app’</strong></em>，如下： [cc lang=”html” nowrap=”false”]  AngularJS Tutorial   [/cc] 这会告诉angular所有在body下的DOM将是我们AngularJS应用程序的一部分，其名称就叫做app。</p>
+<h3 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h3><p>AngularJS提供了一份更为宽松的MVC架构，准确的讲，其应该被称为<a href="http://en.wikipedia.org/wiki/Model_View_ViewModel" target="_blank" rel="noopener">MVVM架构</a>。业务逻辑应该被放置在控制器里面完成，控制器本质上应该“控制”数据并且提供数据给view去显示。打开main.ctrl.js，添加如下的javascript代码来声明我们的主控制器。 [cc lang=”javascript” nowrap=”false”] angular.module(‘app’).controller(“MainController”, function(){ var vm = this; }); [/cc] 在上面的代码中，我们首先去取回了那个我们之前创建的app模块，然后使用controller方法实例化了一个新的控制器。这个controller方法接受两个参数，第一个参数是这个控制器的名字，第二个参数则是一个函数，在这个函数里面我们能放置我们的控制代码。 在我们使用这个控制器之前，我们需要先告诉angular这个控制器可以控制哪部分的html文档。在一份文档里面可以有很多不同的控制器，不同的控制器可以控制相同部分的html片段，也可以控制不同部分的html片段，嵌套的控制器也是支持的。在我们这个异常简单的例子里面我们将只会有一个控制器控制整个页面，我们使用<em><strong>controllerAs</strong></em>这个语法来声明它（后面还会提到），打开index.html并且在body标签加入下面的代码。 [cc lang=”html” nowrap=”false”]  AngularJS Tutorial   [/cc]</p>
+<h3 id="理解scope"><a href="#理解scope" class="headerlink" title="理解scope"></a>理解scope</h3><p>通常人们会把$scope注入到控制器里，然后把所有的控制器变量赋值到这个scope对象上，然后所有这些变量便会在view里面可以访问。然而，AngularJS团队推荐另外一种更好的办法，那就是使用<em><strong>controllerAs</strong></em>语法。这提供了一种更语义化的方法来定义控制器，并且规避了一些诸如在多个嵌套控制器存在的时候会出现scope bleed问题（不知道其确切含义，待译者来日深入研究后再议）。 我们把这个控制器的实例赋值给了一个叫vm的变量，这个vm是指ViewModel（页面model），John Papa的style guide里面也是这么推荐的。然后我们将所有需要在view里面能访问的变量赋值到这个对象上，这样angular就可以开始施展它的魔法，比如双向数据绑定（two-way data binding）。 为了更好的理解scope，我们定义一个简单的变量<em><strong>title</strong></em>用来保存我们想在页面上显示的标题文字。打开main.ctrl.js并加入如下代码： [cc lang=”javascript” nowrap=”false”] angular.module(‘app’).controller(“MainController”, function(){ var vm = this; vm.title = ‘AngularJS Tutorial Example’; }); [/cc] 用下面的语法形式来显示这个标题文字： [cc lang=”html” nowrap=”false”]  AngularJS Tutorial  </p>
+<h1 id="main-title"><a href="#main-title" class="headerlink" title="{ {main.title}}"></a>{ {main.title}}</h1><p>[/cc] 在上面的例子中，h1标签里面的标题文字是用一对双大括号来显示的，这样angular就知道这是个变量。我们访问控制器scope的前缀也和我们之前用ControllerAs语法定义的变量相符。现在想象一下在同一个文档里面有多个控制器，而你还在以传统的方法引用多个变量，比如 { {title}}。这样就很难看出这个变量究竟是属于哪个scope。另外，这样也更容易导致很多不同的变量却意外的拥有相同的名字的问题（比如 scope bleed）（大概明白scope bleed啥意思了，译者注） 如果用网页的形式打开index.html，应该就能看到看到标题文字，虽然这网页目前还极其无聊。</p>
+<p>See the Pen <a href="http://codepen.io/RevillWeb/pen/EaVWWy/" target="_blank" rel="noopener">AngularJS Tutorial Example</a> by Leon Revill (<a href="http://codepen.io/RevillWeb" target="_blank" rel="noopener">@RevillWeb</a>) on <a href="http://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p>
+<h3 id="理解绑定"><a href="#理解绑定" class="headerlink" title="理解绑定"></a>理解绑定</h3><p>双向数据绑定是AngularJS的一大主要卖点，所有就让我们来看看它到底是什么。在main.ctrl.js里面加上另外一个变量searchInput，就像下面这样： [cc lang=”javascript” nowrap=”false”] angular.module(‘app’).controller(“MainController”, function(){ var vm = this; vm.title = ‘AngularJS Tutorial Example’; vm.searchInput = ‘’; }); [/cc] 打开index.html并加入一些简单的可以让用户输入搜索条件的代码。 [cc lang=”html” nowrap=”false” height=”450”]  AngularJS Tutorial    </p>
+<h1 id="main-title-1"><a href="#main-title-1" class="headerlink" title="{ {main.title}}"></a>{ {main.title}}</h1><p>{ {main.searchInput}}</p>
+<p>[/cc] 除了加了一个搜索输入框之外，我们又一次使用大括号把变量searchInput的值输出到页面上。在text input的html标签上我们加上了ng-model的指令(directive)，并用主控制器的searchInput变量进行赋值。这样这个input输入框就和我们的变量绑定了，这个input输入值不仅会在这个controller代码里可用而且所有该controller控制的html文档内部也可以访问到该input值。如果现在在浏览器里面打开index.html，在搜索框输入一些搜索条件之后你将会在搜索框下面立刻看到你所输入的搜索条件。您可以在下面的live预览里面亲自试试。</p>
+<p>See the Pen <a href="http://codepen.io/RevillWeb/pen/QwjpdP/" target="_blank" rel="noopener">QwjpdP</a> by Leon Revill (<a href="http://codepen.io/RevillWeb" target="_blank" rel="noopener">@RevillWeb</a>) on <a href="http://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p>
+<h3 id="使用ngRepeat"><a href="#使用ngRepeat" class="headerlink" title="使用ngRepeat"></a>使用ngRepeat</h3><p>AngularJS提供了广泛的内置指令（directive）来帮助我们完成一些平时常用的工作。ngRepeat指令允许你在一个列表里面迭代并且显示在页面上。让我们创建一个包含一些对象的数组，从而我们可以对其进行迭代。更新main.ctrl.js文件让其拥有下面的数组。 [cc lang=”javascript”] angular.module(‘app’).controller(“MainController”, function(){ var vm = this; vm.title = ‘AngularJS Tutorial Example’; vm.searchInput = ‘’; vm.shows = [ { title: ‘Game of Thrones’, year: 2011, favorite: true }, { title: ‘Walking Dead’, year: 2010, favorite: false }, { title: ‘Firefly’, year: 2002, favorite: true }, { title: ‘Banshee’, year: 2013, favorite: true }, { title: ‘Greys Anatomy’, year: 2005, favorite: false } ]; }); [/cc] [cc nowrap=”false”] [信息] 在现实情景下，像这样的数据通常会通过一些API服务的调用而得多，并且得到后会将其存于本地。 [/cc] 现在我们有了一个可以用ngRepeat进行迭代循环的数组，循环遍历其中的每部TV show从而可以在页面上创建一个无序列表。打开index.html并加入如下代码。 [cc lang=”html”]  AngularJS Tutorial    </p>
+<h1 id="main-title-2"><a href="#main-title-2" class="headerlink" title="{ {main.title}}"></a>{ {main.title}}</h1><h3 id="A-list-of-TV-shows"><a href="#A-list-of-TV-shows" class="headerlink" title="A list of TV shows"></a>A list of TV shows</h3><ul>
+<li>{ {show.title}} { {show.year}}</li>
+</ul>
+<p>[/cc] 在这个例子里，ngRepeat会为我们TV shows数组里面的每份内容做一份<li>标签内容的拷贝。然后我们就可以用<em><strong>{ {show.[property]}}</strong></em>的形式来访问数组里面每个元素的属性，他们显示的时候会被包含到相对应的到每个</li><li>标签里面。 未完待续……</li></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/angular/" rel="tag"># angular</a>
+          
+            <a href="/tags/front-end/" rel="tag"># front-end</a>
+          
+            <a href="/tags/angularjs/" rel="tag"># angularjs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/03/30/e7-ac-91-e9-a2-9c/" rel="next" title="笑颜">
+                <i class="fa fa-chevron-left"></i> 笑颜
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/04/13/angularjs-tutorial-learn-angularjs-in-30-minutes-part-2/" rel="prev" title="AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 2)">
+                AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 2) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Samson Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">347</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">148</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">140</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备"><span class="nav-number">3.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Angular化你的网页"><span class="nav-number">4.</span> <span class="nav-text">Angular化你的网页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制器"><span class="nav-number">5.</span> <span class="nav-text">控制器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解scope"><span class="nav-number">6.</span> <span class="nav-text">理解scope</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#main-title"><span class="nav-number"></span> <span class="nav-text">{ {main.title}}</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#理解绑定"><span class="nav-number">1.</span> <span class="nav-text">理解绑定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#main-title-1"><span class="nav-number"></span> <span class="nav-text">{ {main.title}}</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用ngRepeat"><span class="nav-number">1.</span> <span class="nav-text">使用ngRepeat</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#main-title-2"><span class="nav-number"></span> <span class="nav-text">{ {main.title}}</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-list-of-TV-shows"><span class="nav-number">1.</span> <span class="nav-text">A list of TV shows</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Samson Wu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="标题看起来非常official，实际上就是很official… 因为咱是从mozilla的 official site 拷过来的…… 本来昨天就想拷的，结果事情实在太多，只好拖到现在，虽然有点out了不过也无妨，因为彼时彼刻，恰如此时此刻～  Firefox 4 is based on the Gecko 2.0 Web platform. This release features JavaSc">
+<meta name="keywords" content="Share,Browser,Firefox">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What’s New in Firefox 4 (Part 1)">
+<meta property="og:url" content="http://yoursite.com/2011/03/24/what-e2-80-99s-new-in-firefox-4-part-1/index.html">
+<meta property="og:site_name" content="Samson&#39;s Blog">
+<meta property="og:description" content="标题看起来非常official，实际上就是很official… 因为咱是从mozilla的 official site 拷过来的…… 本来昨天就想拷的，结果事情实在太多，只好拖到现在，虽然有点out了不过也无妨，因为彼时彼刻，恰如此时此刻～  Firefox 4 is based on the Gecko 2.0 Web platform. This release features JavaSc">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://blog.samsonis.me/wp-content/uploads/2011/03/ff4-do-not-track-150x150.png">
+<meta property="og:updated_time" content="2018-11-29T07:56:20.411Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="What’s New in Firefox 4 (Part 1)">
+<meta name="twitter:description" content="标题看起来非常official，实际上就是很official… 因为咱是从mozilla的 official site 拷过来的…… 本来昨天就想拷的，结果事情实在太多，只好拖到现在，虽然有点out了不过也无妨，因为彼时彼刻，恰如此时此刻～  Firefox 4 is based on the Gecko 2.0 Web platform. This release features JavaSc">
+<meta name="twitter:image" content="http://blog.samsonis.me/wp-content/uploads/2011/03/ff4-do-not-track-150x150.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2011/03/24/what-e2-80-99s-new-in-firefox-4-part-1/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>What’s New in Firefox 4 (Part 1) | Samson's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Samson's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2011/03/24/what-e2-80-99s-new-in-firefox-4-part-1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samson Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Samson's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">What’s New in Firefox 4 (Part 1)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2011-03-24 16:18:57" itemprop="dateCreated datePublished" datetime="2011-03-24T16:18:57+08:00">2011-03-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-29 15:56:20" itemprop="dateModified" datetime="2018-11-29T15:56:20+08:00">2018-11-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Firefox/" itemprop="url" rel="index"><span itemprop="name">Firefox</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Firefox/Share/" itemprop="url" rel="index"><span itemprop="name">Share</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Firefox/Share/Technique/" itemprop="url" rel="index"><span itemprop="name">Technique</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>标题看起来非常official，实际上就是很official… 因为咱是从mozilla的 <a href="http://www.mozilla.com/en-US/firefox/4.0/releasenotes/" target="_blank" rel="noopener">official site</a> 拷过来的…… 本来昨天就想拷的，结果事情实在太多，只好拖到现在，虽然有点out了不过也无妨，因为彼时彼刻，恰如此时此刻～</p>
+<blockquote>
+<p>Firefox 4 is based on the Gecko 2.0 Web platform. This release features JavaScript execution speeds up to six times faster than the previous version, new capabilities for Web Developers and Add-on Developers such as hardware accelerated graphics and HTML5 technologies, and a completely revised user interface.</p>
+</blockquote>
+<p>Firefox每次minor版本的更新都伴随着其内核 <a href="http://en.wikipedia.org/wiki/Gecko_%28layout_engine%29" target="_blank" rel="noopener">Gecko版本的更新</a> ((话说回来，浏览器不更新这个还更新什么))，这次major版本更新，Gecko也索性来个大版本号，步调要一致，不然要扯着蛋，嗯… 我不知道你，反正我打开FF4的第一反应是快 ((注意，不是指初次启动速度，这个貌似还是painfully slow……))，这个跟6倍速 javascript 性能提升不无关系，当然肯定还有UI的优化，不像以前点个按钮给我个圈圈让我等，上了个厕所倒了杯水回来还是那个圈圈在那欢快的转…… 另外硬件加速，html5什么的我们下面应该会有具体细则，这里只是暂行条例，只是个大方向，详细的征收细则还需要之后由地方政府提供.</p>
+<blockquote>
+<p>· Firefox 4 is available in over 80 languages</p>
+</blockquote>
+<p>great，可惜和大部分人（至少和我）无关.</p>
+<blockquote>
+<p>· Uses <a href="http://blog.mozilla.com/dmandelin/2010/09/08/presenting-jagermonkey/" target="_blank" rel="noopener">JägerMonkey</a>, a new, faster JavaScript engine that is up to six times faster than Firefox 3.6</p>
+</blockquote>
+<p>这个就是之前说的6倍加速，绝对是ff4的一大亮点，同时也印证了有竞争才有发展，瞧，这帮人承受着来自webkit和chrome的压力于是就去reverse engineering了他们一把，然后把key pieces还最后交给了部分intern完成…… how dare they?</p>
+<blockquote>
+<p>· Support for the <a href="http://blog.sidstamm.com/2011/01/opting-out-of-behavioral-ads.html" target="_blank" rel="noopener">Do Not Track (“DNT”) header</a> that allows users to opt-out of behavioural advertising</p>
+</blockquote>
+<p>怎么实现的我没有仔细看（貌似应该是啥header吧），我只知道大概怎么使用…… 使用方法就是在Preferences -&gt; Advanced -&gt; General，然后 “Tell web sites I do not want to be tracked” ，如下图： <a href="http://blog.samsonis.me/wp-content/uploads/2011/03/ff4-do-not-track.png" target="_blank" rel="noopener"><img src="http://blog.samsonis.me/wp-content/uploads/2011/03/ff4-do-not-track-150x150.png" alt="" title="ff4 do not track"></a></p>
+<blockquote>
+<p>· <a href="http://www.mozilla.com/mobile/sync/" target="_blank" rel="noopener">Firefox Sync</a> is included by default, allowing you to securely synchronize between multiple computers and mobile devices</p>
+</blockquote>
+<p>又是一个cloud应用呵呵（而且要命的是也是做backup, restore的……），mobile的版本和我无关，不过用来备份 bookmarks, preferences, history, password 还有 tab 什么的还是蛮好的.</p>
+<blockquote>
+<p>· Certain graphics rendering operations are now <a href="http://hacks.mozilla.org/2010/09/hardware-acceleration/" target="_blank" rel="noopener">hardware-accelerated</a> using Direct3D 9 on Windows XP, Direct3D 10 on Windows Vista and 7, and OpenGL on Mac OS (OpenGL on Linux will be supported in the future)</p>
+</blockquote>
+<p>这个看上去很高级，不知道会不会提高flash在mac上的播放效率，会吗？不会吗？会吗？不会吧，好像cpu还是很高嘛…… 不过这个还有待考证，说不定我和现在开了无数个tab有关. Anyway, great stuff!</p>
+<blockquote>
+<p>· Direct2D Hardware Acceleration is now on by default for Windows 7 users</p>
+</blockquote>
+<p>great for windows 7 users，but again, 和我无关… So I don’t care…</p>
+<blockquote>
+<p>· WebGL is enabled on all platforms that have a capable graphics card with updated drivers</p>
+</blockquote>
+<p>我查了一下我的about:config，确实开着，只可惜我的那个card很可能不是个capable graphics card…</p>
+<blockquote>
+<p>· Native support for the HD HTML5 <a href="http://hacks.mozilla.org/2010/05/firefox-youtube-and-webm/" target="_blank" rel="noopener">WebM</a> video format, hardware accelerated where available</p>
+</blockquote>
+<p>到底还是sponser，这钱也不是白给的！当然和人家open source也不无关系就是了.</p>
+<blockquote>
+<p>· Firefox button has a new look for Windows Vista and Windows 7 users</p>
+</blockquote>
+<p>看准了，xp也不支持哦，只支持vista和win7，这个和我就更无关了.</p>
+<blockquote>
+<p>· <a href="http://blog.mozilla.com/faaborg/2010/06/24/why-tabs-are-on-top-in-firefox-4/" target="_blank" rel="noopener">Tabs are now on top</a> by default on Windows, Mac OS X, and Linux</p>
+</blockquote>
+<p>en，I see you…</p>
+<blockquote>
+<p>· You can <a href="http://www.mozilla.com/en-US/firefox/features/#feature-switch" target="_blank" rel="noopener">search for and switch to already open tabs</a> in the Smart Location Bar</p>
+</blockquote>
+<p>我试了一把，确实可以work耶（废话。。），但是我觉得还是没我鼠标点来的快…… 除非你open了无数个tab，早已淹没在tab的海洋里.</p>
+<blockquote>
+<p>· The stop and reload buttons have been merged into a single button on Windows, Mac OS X, and Linux</p>
+</blockquote>
+<p>这个我搞了好久… 原来customize的时候一定要先放 refresh button 然后紧接着放 stop button（中间不能有space），customize状态的时候一直是分离的（这也是最confuse的），直到最后点击完成的时候才会六神合体…… (巫妖王: now.. we are one.)</p>
+<blockquote>
+<p>· The Bookmarks Toolbar has been replaced with a Bookmarks Button by default (you can switch it back if you’d like)</p>
+</blockquote>
+<p>看到了，但是我还是习惯原来的.</p>
+<blockquote>
+<p>· Crash protection for Windows, Linux, and Mac OS X when there is a crash in the Adobe Flash, Apple Quicktime or Microsoft Silverlight plugins</p>
+</blockquote>
+<p>呵呵，看来它们是crash report的罪魁祸首，为了减少crash report server的load以及最终减少运维费用，采用沙漏是多么明智的选择。 好长啊，copy了这么久才发现才有1/3… 崩溃中，休息一会再说…… To be continued…</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Share/" rel="tag"># Share</a>
+          
+            <a href="/tags/Browser/" rel="tag"># Browser</a>
+          
+            <a href="/tags/Firefox/" rel="tag"># Firefox</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2011/03/21/update-53-e6-b5-81-e6-b0-93-e4-bc-9a-e6-ad-a6-e6-9c-af/" rel="next" title="Update 53: 流氓会武术">
+                <i class="fa fa-chevron-left"></i> Update 53: 流氓会武术
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2011/03/24/what-e2-80-99s-new-in-firefox-4-part-2/" rel="prev" title="What’s New in Firefox 4 (Part 2)">
+                What’s New in Firefox 4 (Part 2) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Samson Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">347</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">148</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">140</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Samson Wu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

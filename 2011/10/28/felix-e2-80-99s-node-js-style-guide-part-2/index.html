@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="接上篇：Felix’s Node.js Style Guide (Part 1) 创建Object / Array逗号应放在行尾而不是行首，每一行放置简短的变量声明。只在你的解释器抱怨的时候才应该去给array的key上加上引号。 正确： [cc lang=”javascript”] var a = [‘hello’, ‘world’]; var b = { good: ‘code’, ‘is g">
+<meta name="keywords" content="Share,Node.js,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Felix’s Node.js Style Guide (Part 2)">
+<meta property="og:url" content="http://yoursite.com/2011/10/28/felix-e2-80-99s-node-js-style-guide-part-2/index.html">
+<meta property="og:site_name" content="Samson&#39;s Blog">
+<meta property="og:description" content="接上篇：Felix’s Node.js Style Guide (Part 1) 创建Object / Array逗号应放在行尾而不是行首，每一行放置简短的变量声明。只在你的解释器抱怨的时候才应该去给array的key上加上引号。 正确： [cc lang=”javascript”] var a = [‘hello’, ‘world’]; var b = { good: ‘code’, ‘is g">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-29T07:56:20.414Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Felix’s Node.js Style Guide (Part 2)">
+<meta name="twitter:description" content="接上篇：Felix’s Node.js Style Guide (Part 1) 创建Object / Array逗号应放在行尾而不是行首，每一行放置简短的变量声明。只在你的解释器抱怨的时候才应该去给array的key上加上引号。 正确： [cc lang=”javascript”] var a = [‘hello’, ‘world’]; var b = { good: ‘code’, ‘is g">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2011/10/28/felix-e2-80-99s-node-js-style-guide-part-2/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Felix’s Node.js Style Guide (Part 2) | Samson's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Samson's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2011/10/28/felix-e2-80-99s-node-js-style-guide-part-2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samson Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Samson's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Felix’s Node.js Style Guide (Part 2)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2011-10-28 12:20:49" itemprop="dateCreated datePublished" datetime="2011-10-28T12:20:49+08:00">2011-10-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-29 15:56:20" itemprop="dateModified" datetime="2018-11-29T15:56:20+08:00">2018-11-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Node-js/" itemprop="url" rel="index"><span itemprop="name">Node.js</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Node-js/Share/" itemprop="url" rel="index"><span itemprop="name">Share</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Node-js/Share/Technique/" itemprop="url" rel="index"><span itemprop="name">Technique</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>接上篇：<a href="http://blog.samsonis.me/2011/10/felixs-node-js-style-guide-part-1/" title="  Felix’s Node.js Style Guide (Part 1)" target="_blank" rel="noopener">Felix’s Node.js Style Guide (Part 1)</a></p>
+<h3 id="创建Object-Array"><a href="#创建Object-Array" class="headerlink" title="创建Object / Array"></a>创建Object / Array</h3><p>逗号应放在行尾而不是行首，每一行放置简短的变量声明。只在你的解释器抱怨的时候才应该去给array的key上加上引号。 正确： [cc lang=”javascript”] var a = [‘hello’, ‘world’]; var b = { good: ‘code’, ‘is generally’: ‘pretty’, }; [/cc] 错误： [cc lang=”javascript”] var a = [ ‘hello’, ‘world’ ]; var b = {“good”: ‘code’ , is generally: ‘pretty’ }; [/cc]</p>
+<h3 id="等号操作符"><a href="#等号操作符" class="headerlink" title="等号操作符"></a>等号操作符</h3><p>编程不是仅仅记住那些愚蠢的规则。比如我们应该使用三个等号的相等操作符，因为它会有我们意料之中的行为。 正确： [cc lang=”javascript”] var a = 0; if (a === ‘’) { console.log(‘winning’); } [/cc] 错误： [cc lang=”javascript”] var a = 0; if (a == ‘’) { console.log(‘losing’); } [/cc]</p>
+<h3 id="原型扩展"><a href="#原型扩展" class="headerlink" title="原型扩展"></a>原型扩展</h3><p>不要扩展任何对象的prototype原型，特别是native的对象。如果你不遵守这条准则，地狱里面某个特殊的地方正在等着你。 正确： [cc lang=”javascript”] var a = []; if (!a.length) { console.log(‘winning’); } [/cc] 错误： [cc lang=”javascript”] Array.prototype.empty = function() { return !this.length; } var a = []; if (a.empty()) { console.log(‘losing’); } [/cc]</p>
+<h3 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h3><p>任何只要不是没用的条件判断都应该被赋予一个有意义具有描述性的变量名： 正确： [cc lang=”javascript”] var isAuthorized = (user.isAdmin() || user.isModerator()); if (isAuthorized) { console.log(‘winning’); } [/cc] 错误： [cc lang=”javascript”] if (user.isAdmin() || user.isModerator()) { console.log(‘losing’); } [/cc]</p>
+<h3 id="函数长度"><a href="#函数长度" class="headerlink" title="函数长度"></a>函数长度</h3><p>函数尽量保持简短。一个好的函数应该能够完整的放到一张幻灯片里面，且能让一个大会议室的最后一排观众可以轻松舒适的阅读到。所以不要指望他们都有很好的视力，你应该限制你的每个函数都在10行左右。</p>
+<h3 id="Return语句"><a href="#Return语句" class="headerlink" title="Return语句"></a>Return语句</h3><p>为了避免if语句的深层次嵌套，函数内部尽量越早return越好。 正确： [cc lang=”javascript”] function isPercentage(val) { if (val &lt; 0) { return false; } if (val &gt; 100) { return false; } return true; } [/cc] 错误： [cc lang=”javascript”] function isPercentage(val) { if (val &gt;= 0) { if (val &lt; 100) { return true; } else { return false; } } else { return false; } } [/cc] 就这个例子来说，我们还可以更加简化： [cc lang=”javascript”] function isPercentage(val) { var isInRange = (val &gt;= 0 &amp;&amp; val &lt;= 100); return isInRange; } [/cc]</p>
+<h3 id="命名闭包"><a href="#命名闭包" class="headerlink" title="命名闭包"></a>命名闭包</h3><p>可以给你的闭包取个名字。这意味着你很关心它们，且会产生更好的堆栈跟踪（stack trace）。 正确： [cc lang=”javascript”] req.on(‘end’, function onEnd() { console.log(‘winning’); }); [/cc] 错误： [cc lang=”javascript”] req.on(‘end’, function() { console.log(‘losing’); }); [/cc]</p>
+<h3 id="嵌套闭包"><a href="#嵌套闭包" class="headerlink" title="嵌套闭包"></a>嵌套闭包</h3><p>使用闭包，但不要嵌套它们。否则你的代码会变的一团糟。 正确： [cc lang=”javascript”] setTimeout(function() { client.connect(afterConnect); }, 1000); function afterConnect() { console.log(‘winning’); } [/cc] 错误： [cc lang=”javascript”] setTimeout(function() { client.connect(function() { console.log(‘losing’); }); }, 1000); [/cc]</p>
+<h3 id="回调（Callbacks）"><a href="#回调（Callbacks）" class="headerlink" title="回调（Callbacks）"></a>回调（Callbacks）</h3><p>由于node意味着到处都是非阻塞I/O，函数通常都会使用回调函数来返回结果。node核心开发小组的惯例是保留回调函数的第一个参数，以用来存储可能存在的error对象。 你应该在你自己的回调函数里使用相同的方法。</p>
+<h3 id="Object-freeze-Object-preventExtensions-Object-seal-with-eval"><a href="#Object-freeze-Object-preventExtensions-Object-seal-with-eval" class="headerlink" title="Object.freeze, Object.preventExtensions, Object.seal, with, eval"></a>Object.freeze, Object.preventExtensions, Object.seal, with, eval</h3><p>这些都是些疯狂的东西，你很有可能永远不需要它们。远离它们。</p>
+<h3 id="Getters-and-setters"><a href="#Getters-and-setters" class="headerlink" title="Getters and setters"></a>Getters and setters</h3><p>不要使用setters，它们会产生远比它能解决的麻烦多的多的麻烦。 可以在不产生<a href="http://en.wikipedia.org/wiki/Side_effect_%28computer_science%29" title="side effects" target="_blank" rel="noopener">副作用</a>的时候使用getters，比如给你的集合类提供一个length属性。</p>
+<h3 id="EventEmitters"><a href="#EventEmitters" class="headerlink" title="EventEmitters"></a>EventEmitters</h3><p>Node.js自带了一个简单的EventEmitter类，它可以从’event’模块里面进行include： [cc lang=”javascript”] var EventEmitter = require(‘events’).EventEmitter; [/cc] 在创建复杂的类的时候，继承这个EventEmitter类来用来产生事件是很常见的做法。这基本上就是一个简单的<a href="http://en.wikipedia.org/wiki/Observer_pattern" title="Observer Pattern" target="_blank" rel="noopener">观察者模式</a>的实现。 不过，我强烈建议你不要在你自己的类里面监听它自己所发出的事件。让一个对象监听它自己是很不自然的。它经常还会以你不希望的形式将你的实现细节暴露出来，同时让你的代码更难看懂。</p>
+<h3 id="继承-面向对象编程"><a href="#继承-面向对象编程" class="headerlink" title="继承 / 面向对象编程"></a>继承 / 面向对象编程</h3><p>继承和面向对象编程它们本身各自都是主题。如果你对这个流行的编程模型有兴趣，请阅读我的<a href="http://nodeguide.com/object_oriented_programming.html" title="Object oriented programming guide" target="_blank" rel="noopener">面向对象编程指南</a>。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Share/" rel="tag"># Share</a>
+          
+            <a href="/tags/Node-js/" rel="tag"># Node.js</a>
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2011/10/27/felixs-node-js-style-guide-part-1/" rel="next" title="Felix's Node.js Style Guide (Part 1)">
+                <i class="fa fa-chevron-left"></i> Felix's Node.js Style Guide (Part 1)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2011/10/31/update-62-e7-82-b9-e4-b8-8b-e9-a2-98/" rel="prev" title="Update 62: 点下题">
+                Update 62: 点下题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Samson Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">347</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">148</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">140</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Object-Array"><span class="nav-number">1.</span> <span class="nav-text">创建Object / Array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#等号操作符"><span class="nav-number">2.</span> <span class="nav-text">等号操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型扩展"><span class="nav-number">3.</span> <span class="nav-text">原型扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件判断"><span class="nav-number">4.</span> <span class="nav-text">条件判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数长度"><span class="nav-number">5.</span> <span class="nav-text">函数长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Return语句"><span class="nav-number">6.</span> <span class="nav-text">Return语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名闭包"><span class="nav-number">7.</span> <span class="nav-text">命名闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套闭包"><span class="nav-number">8.</span> <span class="nav-text">嵌套闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回调（Callbacks）"><span class="nav-number">9.</span> <span class="nav-text">回调（Callbacks）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-freeze-Object-preventExtensions-Object-seal-with-eval"><span class="nav-number">10.</span> <span class="nav-text">Object.freeze, Object.preventExtensions, Object.seal, with, eval</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Getters-and-setters"><span class="nav-number">11.</span> <span class="nav-text">Getters and setters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EventEmitters"><span class="nav-number">12.</span> <span class="nav-text">EventEmitters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承-面向对象编程"><span class="nav-number">13.</span> <span class="nav-text">继承 / 面向对象编程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Samson Wu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="由于篇幅过长，所以人为强行分成两篇，望见谅。 接上篇，AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 1) 隐藏和显示elementsAngularJS另外还提供了一套指令（directive），允许用户根据一些条件或者表达式来隐藏或者显示某个DOM element。这些指令有ngHide，ngShow，ngSwitch和ngIf。">
+<meta name="keywords" content="angular,front-end,angularjs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 2)">
+<meta property="og:url" content="http://yoursite.com/2015/04/13/angularjs-tutorial-learn-angularjs-in-30-minutes-part-2/index.html">
+<meta property="og:site_name" content="Samson&#39;s Blog">
+<meta property="og:description" content="由于篇幅过长，所以人为强行分成两篇，望见谅。 接上篇，AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 1) 隐藏和显示elementsAngularJS另外还提供了一套指令（directive），允许用户根据一些条件或者表达式来隐藏或者显示某个DOM element。这些指令有ngHide，ngShow，ngSwitch和ngIf。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-29T07:56:20.419Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 2)">
+<meta name="twitter:description" content="由于篇幅过长，所以人为强行分成两篇，望见谅。 接上篇，AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 1) 隐藏和显示elementsAngularJS另外还提供了一套指令（directive），允许用户根据一些条件或者表达式来隐藏或者显示某个DOM element。这些指令有ngHide，ngShow，ngSwitch和ngIf。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/04/13/angularjs-tutorial-learn-angularjs-in-30-minutes-part-2/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 2) | Samson's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Samson's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/04/13/angularjs-tutorial-learn-angularjs-in-30-minutes-part-2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samson Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Samson's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 2)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2015-04-13 16:24:08" itemprop="dateCreated datePublished" datetime="2015-04-13T16:24:08+08:00">2015-04-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-29 15:56:20" itemprop="dateModified" datetime="2018-11-29T15:56:20+08:00">2018-11-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/AngularJS/" itemprop="url" rel="index"><span itemprop="name">AngularJS</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/AngularJS/Front-end/" itemprop="url" rel="index"><span itemprop="name">Front-end</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/AngularJS/Front-end/Technique/" itemprop="url" rel="index"><span itemprop="name">Technique</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>由于篇幅过长，所以人为强行分成两篇，望见谅。 接上篇，<a href="http://blog.samsonis.me/2015/04/angularjs-tutorial-learn-angularjs-in-30-minutes-part-1/" target="_blank" rel="noopener">AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 1)</a></p>
+<h3 id="隐藏和显示elements"><a href="#隐藏和显示elements" class="headerlink" title="隐藏和显示elements"></a>隐藏和显示elements</h3><p>AngularJS另外还提供了一套指令（directive），允许用户根据一些条件或者表达式来隐藏或者显示某个DOM element。这些指令有ngHide，ngShow，ngSwitch和ngIf。这些指令提供了相类似的结果，不过在不同的情况下它们分别会很有用。当你遇到一些类似case switch的情况下ngSwitch指令会很有用，比如一些单选按钮开关（radio switch toggle）。ngHide，ngShow和ngIf有些本质上的不同，虽然表面十分相似。ngIf会将受影响的element从DOM里面移除，而ngHide和ngShow只是加了一个 display:none 的css属性来隐藏它。 因此因尽量可能的使用ngIf，因为这样可以为已经忍受杂乱不堪DOM的浏览器省掉一部分内存。ngHide和ngShow在显示动画效果的时候会特别有用，因为ngIf会由于牵涉到DOM的创建和删除这类比较消耗资源的操作通常会影响到动画的展示效果。 在我们这个简单的例子里，我想在每个我最喜欢的TV show的边上加上一个星星。可以使用ngIf来达到这个效果，让我们来修改index.html。 [cc lang=”html”]</p>
+<h3 id="A-list-of-TV-shows"><a href="#A-list-of-TV-shows" class="headerlink" title="A list of TV shows"></a>A list of TV shows</h3><ul>
+<li>{ {show.title}} { {show.year}}</li>
+</ul>
+<p>[/cc] 这样在show.favorite这个属性是true的时候，页面DOM就会被简单的加上一个星星。这里还另外支持表达式，所以像 show.favorite == true 或者 show.favorite != false这样的表达式在这里也同样可行。</p>
+<h3 id="在ngRepeat里使用过滤器-filter"><a href="#在ngRepeat里使用过滤器-filter" class="headerlink" title="在ngRepeat里使用过滤器 (filter)"></a>在ngRepeat里使用过滤器 (filter)</h3><p>AngularJS提供了在迭代重复的内容里从容的进行过滤的功能。让我们使用之前创建的用户搜索输入来让用户可以过滤自己的TV show列表。 [cc lang=”html”]</p>
+<h3 id="A-list-of-TV-shows-1"><a href="#A-list-of-TV-shows-1" class="headerlink" title="A list of TV shows"></a>A list of TV shows</h3><ul>
+<li>{ {show.title}} { {show.year}}</li>
+</ul>
+<p>[/cc] 就这么简单！想象一下用jQuery来做同样的事情会怎样。来，下面试试这个实现的效果。</p>
+<p>See the Pen <a href="http://codepen.io/RevillWeb/pen/GgpvvG/" target="_blank" rel="noopener">AngularJS Filter Example</a> by Leon Revill (<a href="http://codepen.io/RevillWeb" target="_blank" rel="noopener">@RevillWeb</a>) on <a href="http://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p>
+<p>让我们来把事情变的复杂一些，加入一个选项来改变这些列表条目显示的顺序。修改main.ctrl.js，加入一个用来表示所有可用排列顺序的对象。 [cc lang=”javascript” nowrap=”false” height=”450”] vm.orders = [ { id: 1, title: ‘Year Ascending’, key: ‘year’, reverse: false }, { id: 2, title: ‘Year Descending’, key: ‘year’, reverse: true }, { id: 3, title: ‘Title Ascending’, key: ‘title’, reverse: false }, { id: 4, title: ‘Title Descending’, key: ‘title’, reverse: true } ]; vm.order = vm.orders[0]; [/cc] 在index.html里加上一个select选项，这样用户就可以选择列表排列顺序，然后在我们之前在ngRepeat上加的filter后面再加上一个filter。 [cc lang=”html”]</p>
+<h1 id="main-title"><a href="#main-title" class="headerlink" title="{ {main.title}}"></a>{ {main.title}}</h1><h3 id="A-list-of-TV-shows-2"><a href="#A-list-of-TV-shows-2" class="headerlink" title="A list of TV shows"></a>A list of TV shows</h3><ul>
+<li>{ {show.title}} { {show.year}}</li>
+</ul>
+<p>[/cc] 上面我们在ngRepeat加上了一个 orderBy 的过滤器来指定我们用来排列顺序的key，在这里是title。然后我们指定是顺序还是逆序排列，这个属性被存储在orders对象里面并被命名为reverse。然后为了填充select目录我们用到了ngOption指令，在<a href="https://docs.angularjs.org/api/ng/directive/select" target="_blank" rel="noopener">这里</a>你能看到更多关于ngOption的信息。 修改一下排列顺序，看一下实际的效果。</p>
+<p>See the Pen <a href="http://codepen.io/RevillWeb/pen/ZYQXWO/" target="_blank" rel="noopener">AngularJS order by example</a> by Leon Revill (<a href="http://codepen.io/RevillWeb" target="_blank" rel="noopener">@RevillWeb</a>) on <a href="http://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p>
+<h3 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h3><p>web应用的一大块部分是收集接受用户的输入和数据。AngularJS让表单验证的工作变的简单，确保数据在被传入到应用程序里处理前已被验证过。在这个简单的例子里我们将会创建一个表单来允许用户加入一个新的TV show到列表里来。打开index.html，加入下面的HTML来创建一个简单的form表单。 [cc lang=”html”]  AngularJS Tutorial    </p>
+<h1 id="main-title-1"><a href="#main-title-1" class="headerlink" title="{ {main.title}}"></a>{ {main.title}}</h1><h3 id="A-list-of-TV-shows-3"><a href="#A-list-of-TV-shows-3" class="headerlink" title="A list of TV shows"></a>A list of TV shows</h3><ul>
+<li>{ {show.title}} { {show.year}}</li>
+</ul>
+<h3 id="Add-a-new-TV-Show"><a href="#Add-a-new-TV-Show" class="headerlink" title="Add a new TV Show"></a>Add a new TV Show</h3><p>Title </p>
+<p>Year </p>
+<p>Favorite: </p>
+<p>Add</p>
+<p>[/cc] 这个简单的form表单会允许用户输入一个show的名称，年份还有指定其是否是自己的favorite。在title和year的input上我们加上了一个required的属性，这样这两个值就是必须的。另外我们指定year的input属性为数字，并加上了min和max的属性。AngularJS自带了form表单验证的功能，当用户点击Add按钮的时候会自动提供反馈。如果用户没有在那些必须的fields上填写内容，就将会被系统提示错误信息。同样的，如果用户没有输入了一个介于1900到2030之间的数字，他们也会被要求修改。试一下实际的效果。</p>
+<p>See the Pen <a href="http://codepen.io/RevillWeb/pen/XJXEXY/" target="_blank" rel="noopener">AngularJS simple form validation</a> by Leon Revill (<a href="http://codepen.io/RevillWeb" target="_blank" rel="noopener">@RevillWeb</a>) on <a href="http://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p>
+<p>更多关于AngularJS form表单的信息请参见<a href="https://docs.angularjs.org/guide/forms" target="_blank" rel="noopener">这里</a>。</p>
+<h3 id="响应简单事件"><a href="#响应简单事件" class="headerlink" title="响应简单事件"></a>响应简单事件</h3><p>本AngularJS教程的最后一部分将向您展示在这个框架里面事件event是怎样使用的。事件机制一直是JavaScript框架和库的重要部分，这里也不例外，即便Angular有它的双向数据绑定。 如果用户不能实际提交数据并加入到TV show的列表，刚刚创建的表单其实并没有实际的用处。在MainController的底下加入如下的代码。 [cc lang=”javascript”] vm.new = {}; vm.addShow = function() { vm.shows.push(vm.new); vm.new = {}; }; [/cc] 上面的代码声明了一个称作new的对象，这个对象在form表单里被用来存储被标记为ngModel值的输入数据（比如，ng-model=”main.new.year”）。另外一个被称为 addShow 的函数也同时被创建，用来给show数组添加新对象从而在页面的列表里添加新条目。 AngularJS提供了不同的事件指令，例如ngClick，ngChange，ngFocus，等等，我们可以根据实际需要来做相应的响应操作。在我们简单例子里，我们将使用ngSubmit指令在form表单成功提交后，去触发 addShow 函数。打开index.html，修改表单的声明来包含这个指令，如下。 [cc lang=”javascript”]</p>
+<p>[/cc] 现在，当表单成功验证并且用户点击Add按钮后，这个addShow函数便会被调用，从而添加一个新的show到列表里来。试一下效果吧！</p>
+<p>See the Pen <a href="http://codepen.io/RevillWeb/pen/KwVoMv/" target="_blank" rel="noopener">AngularJS ngSubmit example</a> by Leon Revill (<a href="http://codepen.io/RevillWeb" target="_blank" rel="noopener">@RevillWeb</a>) on <a href="http://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p>
+<p>这是一个在众多AngularJS事件指令中极其简单一个例子。欲知更多详情，请移步<a href="https://docs.angularjs.org/api" target="_blank" rel="noopener">文档页面</a>，那里有更为详细的内容。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在完成这个快速的教程后您应该对很多AngularJS的理念和处理方式有了大致了解，它们将会方便您以后创建单页面应用程序。AngularJS提供了太多的内容，我不可能在30分钟内全覆盖到。如果您喜欢本教程，请在下面订阅，如果将来有高级的AngularJS教程您将会第一时间收到通知。（订阅请移步<a href="http://www.revillweb.com/tutorials/angularjs-in-30-minutes-angularjs-tutorial/" target="_blank" rel="noopener">原文地址</a>，文章结尾处可以订阅，译者注）</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/angular/" rel="tag"># angular</a>
+          
+            <a href="/tags/front-end/" rel="tag"># front-end</a>
+          
+            <a href="/tags/angularjs/" rel="tag"># angularjs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/09/angularjs-tutorial-learn-angularjs-in-30-minutes-part-1/" rel="next" title="AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 1)">
+                <i class="fa fa-chevron-left"></i> AngularJS Tutorial - Learn AngularJS in 30 minutes (Part 1)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/04/27/e6-84-8f-e8-af-86-e6-b5-81/" rel="prev" title="意识流">
+                意识流 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Samson Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">347</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">148</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">140</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏和显示elements"><span class="nav-number">1.</span> <span class="nav-text">隐藏和显示elements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-list-of-TV-shows"><span class="nav-number">2.</span> <span class="nav-text">A list of TV shows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在ngRepeat里使用过滤器-filter"><span class="nav-number">3.</span> <span class="nav-text">在ngRepeat里使用过滤器 (filter)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-list-of-TV-shows-1"><span class="nav-number">4.</span> <span class="nav-text">A list of TV shows</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#main-title"><span class="nav-number"></span> <span class="nav-text">{ {main.title}}</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-list-of-TV-shows-2"><span class="nav-number">1.</span> <span class="nav-text">A list of TV shows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表单验证"><span class="nav-number">2.</span> <span class="nav-text">表单验证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#main-title-1"><span class="nav-number"></span> <span class="nav-text">{ {main.title}}</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-list-of-TV-shows-3"><span class="nav-number">1.</span> <span class="nav-text">A list of TV shows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-a-new-TV-Show"><span class="nav-number">2.</span> <span class="nav-text">Add a new TV Show</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应简单事件"><span class="nav-number">3.</span> <span class="nav-text">响应简单事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Samson Wu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
